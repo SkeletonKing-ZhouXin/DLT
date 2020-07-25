@@ -1,0 +1,64 @@
+﻿@model DLTModelList;
+@{
+    ViewData["Title"] = "Home Page";
+
+    var dltList = Model.modelList;
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="text-center">
+
+        <div class="content-header clearfix">
+            <h1 class="pull-left"></h1>
+            <div class="pull-right">
+                <a href="@Url.Action("Create")" class="btn btn-primary">
+                    重新生成
+                </a>
+            </div>
+        </div>
+        <div class="content">
+            <div class="form-horizontal">
+                <div class="panel-group">
+                    <div class="panel panel-default panel-search">
+                        <div class="panel-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th colspan="5">前</th>
+                                        <th colspan="2">后</th>
+                                    </tr>
+                                    <tr>
+                                        <th>第一位</th>
+                                        <th>第二位</th>
+                                        <th>第三位</th>
+                                        <th>第四位</th>
+                                        <th>第五位</th>
+                                        <th>第一位</th>
+                                        <th>第二位</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var dlt in dltList)
+                                    {
+                                        <text>
+                                            <tr>
+                                                <th>@dlt.FrontArea.First</th>
+                                                <th>@dlt.FrontArea.Second</th>
+                                                <th>@dlt.FrontArea.Third</th>
+                                                <th>@dlt.FrontArea.Fourth</th>
+                                                <th>@dlt.FrontArea.Fifth</th>
+                                                <th>@dlt.BackArea.Sixth</th>
+                                                <th>@dlt.BackArea.Seventh</th>
+                                            </tr>
+                                        </text>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
